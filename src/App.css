@@ -1,0 +1,15 @@
+button {
+    padding: 10px;
+    background-color: blue;
+    color: white;
+    display: block;
+    width: 200px;
+    margin: 10px auto;
+    cursor: pointer;
+    font-size: 17px;
+}
+button:hover {
+    background-color: white;
+    color: blue;
+    border: 3px solid blue
+}
