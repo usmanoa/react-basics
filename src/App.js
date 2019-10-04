@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
+import Person from './Person/Person'
 
 export default class App extends Component {
   state = {
@@ -10,15 +11,27 @@ export default class App extends Component {
     ],
   } 
 
+
+  nameHandler =(event, id)=> {
+    const persons = [...this.state.persons]
+    let personIndex = persons.findIndex(person => person.id === id)
+    const person = {...persons[personIndex]}
+    person.name = event.target.value;
+    persons[personIndex] = person;
+    this.setState({persons: persons})
+  }
+
+
   render(){
+         
     return(
       this.state.persons.map((person, index)=> {
-        return (
-          <div >
-              <p>My name is {this.state.name}</p>
-              <input type="text" />
-              <p>I'm {this.state.age} years old</p>
-          </div>
+        return(
+          <Person 
+            name={this.state.name}
+            value={this.state.name}
+            age={this.state.age}
+          />
         )
       })
     )

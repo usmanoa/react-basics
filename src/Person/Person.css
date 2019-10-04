@@ -1,0 +1,26 @@
+.person{
+    margin: 10px auto;
+    width: 300px;
+    border:1px solid black;
+    box-shadow: 2px 2px #ccc;
+}
+
+.person p{
+    text-align: center;
+    width: 98%;
+    margin: 2px 0;
+}
+
+.person input{
+    width: 90%;
+    margin-left: 5px;
+    margin-right: 5px;
+    text-align: center
+}
+
+.person span{
+    color: red;
+    font-weight: bolder;
+    font-size: 0.8rem;
+    cursor: pointer;
+}
