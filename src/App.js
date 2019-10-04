@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import Person from './Person/Person'
+import Persons from './Persons/Persons'
 
 export default class App extends Component {
   state = {
@@ -9,8 +9,11 @@ export default class App extends Component {
       {id: '2', name: "John", age: 33},
       {id: '3', name: "Mary", age: 44},
     ],
+    buttonStatus: "Hide Persons",
+    showPersons: true,
   } 
 
+  
 
   nameHandler =(event, id)=> {
     const persons = [...this.state.persons]
@@ -21,19 +24,23 @@ export default class App extends Component {
     this.setState({persons: persons})
   }
 
-
   render(){
-         
-    return(
-      this.state.persons.map((person, index)=> {
-        return(
-          <Person 
-            name={this.state.name}
-            value={this.state.name}
-            age={this.state.age}
+
+    
+      let person = (
+        <div>
+          <Persons 
+            persons= {this.state.persons}
+            changeName = {this.nameHandler}
+            deletePerson = {this.deleteHandler}
           />
-        )
-      })
+        </div>
+      );
+   
+    return(
+      <div>
+        {person}
+      </div>
     )
   }
 }
