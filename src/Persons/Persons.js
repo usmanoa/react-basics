@@ -11,6 +11,7 @@ const Persons = props => {
                 age={person.age} 
                 value={person.name}
                 change = { event => props.changeName(event, person.id)}
+                delete = { _=> props.deletePerson(person.id)}
               />
             )
           })
