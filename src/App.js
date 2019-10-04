@@ -33,6 +33,13 @@ export default class App extends Component {
     this.setState({persons: persons})
   }
 
+  deleteHandler = id => {
+    const personIndex = this.state.persons.findIndex( person => person.id === id)
+    const persons = this.state.persons.filter( (person, index) => personIndex !== index)
+    this.setState({persons: persons})
+  }
+
+
   render(){
 
     let person = null;
@@ -47,10 +54,19 @@ export default class App extends Component {
         </div>
       );
     }
+
+    let emptyMessage = null;
+    if(this.state.persons.length === 0){
+      emptyMessage = (
+        <h2 style={{textAlign : 'center'}} >There is no person to show</h2>
+      )
+    }
+
     return(
       <div>
         <button onClick={this.togglePersons}>{this.state.buttonStatus}</button>
         {person}
+        {emptyMessage}
       </div>
     )
   }
