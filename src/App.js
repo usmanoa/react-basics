@@ -13,7 +13,16 @@ export default class App extends Component {
     showPersons: true,
   } 
 
-  
+  togglePersons =_=> {
+    let buttonText = this.state.buttonStatus === "Hide Persons" ? "Show Persons" : "Hide Persons" ; 
+    const show = this.state.showPersons;
+
+    this.setState({
+      buttonStatus: buttonText,
+      showPersons: !show
+    })
+
+  }
 
   nameHandler =(event, id)=> {
     const persons = [...this.state.persons]
@@ -26,8 +35,9 @@ export default class App extends Component {
 
   render(){
 
-    
-      let person = (
+    let person = null;
+    if(this.state.showPersons) {
+      person = (
         <div>
           <Persons 
             persons= {this.state.persons}
@@ -36,9 +46,10 @@ export default class App extends Component {
           />
         </div>
       );
-   
+    }
     return(
       <div>
+        <button onClick={this.togglePersons}>{this.state.buttonStatus}</button>
         {person}
       </div>
     )
